@@ -34,6 +34,15 @@ contract ICO {
         admin = msg.sender;
     }
 
+    function getSale(address _investor) external view returns (uint256) {
+        for (uint256 i = 0; i < sales.length; i++) {
+            if (sales[i].investor == _investor) {
+                return sales[i].quantity;
+            }
+        }
+        return 0;
+    }
+
     function start(
         uint256 duration,
         uint256 _price,
